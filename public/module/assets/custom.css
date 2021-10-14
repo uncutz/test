@@ -1,0 +1,50 @@
+:root {
+  --background-color: rgba(15, 17, 17, 0.89);
+  --font-color: rgba(255, 255, 255, 0.89);
+}
+
+body {
+  font-family: "Poppins", sans-serif !important;
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+body a {
+  color: var(--font-color);
+}
+body a:hover {
+  color: white;
+}
+
+nav {
+  background-color: rgba(34, 38, 38, 0.89);
+}
+nav .profile-image {
+  height: 2em;
+  border-radius: 50px;
+}
+
+.sign-up-popup,
+.sign-in-popup {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+}
+.sign-up-popup .sign-up-field,
+.sign-in-popup .sign-up-field {
+  min-height: 35em;
+  width: 30em;
+  background-color: #353b3b;
+}
+.sign-up-popup .sign-in-field,
+.sign-in-popup .sign-in-field {
+  min-height: 22em;
+  width: 30em;
+  background-color: #353b3b;
+}
+.sign-up-popup .close,
+.sign-in-popup .close {
+  margin: 0.5em;
+  top: 0;
+  right: 0;
+}
