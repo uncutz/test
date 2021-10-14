@@ -1,0 +1,127 @@
+:root {
+  --background-color: rgba(15, 17, 17, 0.89);
+  --font-color: rgba(255, 255, 255, 0.89);
+  --primary-color: #0fbcd6;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--font-color);
+
+  a {
+    color: var(--font-color);
+    text-decoration: none;
+  }
+}
+
+.navbar {
+  background-color: rgba(34, 38, 38, 0.89);
+  height: 4em;
+  padding: .2em 1.3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+
+  .navbar__container {
+    display: flex;
+    align-items: center;
+
+    .navbar__title {
+      margin-right: 1em;
+      font-size: 2em;
+    }
+
+    .navbar__right, .navbar__left {
+
+      .navbar__item {
+        display: inline-block;
+      }
+    }
+
+    .navbar__left {
+
+      .navbar__item {
+        width: auto;
+
+        .navbar__input {
+          height: 2.4em;
+          border-radius: 6px;
+          border: none;
+
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+
+      .navbar__searchButton {
+        font-size: 1.1rem;
+        height: 2.1em;
+        width: 5em;
+        border-radius: 6px;
+        border: 2px solid gray;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        background-color: transparent;
+
+        &:hover {
+          background-color: gray;
+
+        }
+      }
+    }
+
+
+    .navbar__signInButton {
+      font-size: 1.1rem;
+      height: 2.1em;
+      width: 5em;
+      border-radius: 6px;
+      border: 2px solid var(--primary-color);
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      background-color: var(--primary-color);
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    .navbar__signUpButton {
+      font-size: 1.1rem;
+      height: 2.1em;
+      width: 5em;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      background-color: transparent;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  .navbar {
+    height: 7em;
+  }
+
+}
+
+
+
+
+
+
