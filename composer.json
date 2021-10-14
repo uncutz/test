@@ -1,14 +1,24 @@
 {
-    "name": "johannes/dev-road",
-    "type": "project",
-    "authors": [
-        {
-            "name": "uncutz",
-            "email": "johannes.panzer@tag24.de"
-        }
-    ],
-    "require": {
-        "slim/slim": "4.*",
-        "slim/psr7": "^1.5"
+  "name": "johannespanzer/roadmap-rating-app",
+  "type": "project",
+  "authors": [
+    {
+      "name": "johannespanzer",
+      "email": "johannes-panzer@gmx.de"
     }
+  ],
+  "require": {
+    "php": ">= 7.3",
+    "fig/http-message-util": "1.1.5",
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "Backend\\": "source/",
+      "HttpApi\\": "source/Http/"
+    }
+  }
 }

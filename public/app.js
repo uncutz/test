@@ -1,9 +1,13 @@
-import popupSignUp from "./app/popupSignUp.js";
-import popupSignIn from "./app/popupSignIn.js";
+import popupSignUp from '/module/app/popupSignUp.js';
+import popupSignIn from '/module/app/popupSignIn.js';
 
-export default function app() {
+import test from "./module/app/API.js";
 
+export default function App() {
 
-    document.body.appendChild(popupSignUp.render());
-    document.body.appendChild(popupSignIn.render());
+    this.run = function (){
+        document.body.appendChild(popupSignUp.render());
+        document.body.appendChild(popupSignIn.render());
+        document.querySelector('.-submit').addEventListener('click', ()=>test())
+    }
 }

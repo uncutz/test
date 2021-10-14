@@ -1,65 +1,87 @@
+// Get the template for the sign in popup
+const templatePopupSignIn = document.getElementById('template-sign-in-popup');
+
+const empty = document.createElement('div');
+
 function render() {
     const $element = document.createElement('div');
-    document.querySelector('.-sign-in-button').addEventListener('click', function () {
 
-        $element.innerHTML = `<div class="position-absolute align-items-center justify-content-center -sign-in-popup">
-    <div class="row mt-5 d-flex justify-content-center">
-        <div class="d-flex flex-column justify-content-center position-absolute -sign-in-field">
-            <button type="button" class="btn btn-secondary btn-sm position-absolute -close">x</button>
-             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Username"><br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Email"><br>
-            <label for="password1">Password:</label>
-            <input type="password" id="password1" name="password1" placeholder="Password"><br>
-            <label for="password1">Password-repeat:</label>
-            <button type="button" class="btn btn-secondary -submit-sign-in">Sign Up</button>
-        </div>
-    </div>
-</div>`;
+    // Create a popup when clicking on the sign in button
+    document
+        .querySelector('.sign-in-button')
+        .addEventListener('click', function () {
+            // Clone the template for the sign in popup
 
+            /** @type {HTMLElement} */
+            var popup = templatePopupSignIn.content.cloneNode(true); // templatePopupSignIn
 
-        $element.querySelector('.-close').addEventListener('click', function () { //schließt popupSignUp mit -close Button
-            $element.innerHTML = '';
-        })
+            // Close popup when clicking on close button
+            popup
+                .querySelector('.close')
+                .addEventListener('click', function () {
+                    closePopup();
+                    return empty; // optional
+                });
 
+            popup
+                .querySelector('.submit-sign-in')
+                .addEventListener('click', checkSignIn); // TODO why is popup.querySelector not working inside here?
 
-        $element.querySelector('.-submit-sign-in').addEventListener('click', function () {
-            let username = document.querySelector('#username').value;
-            let email = document.querySelector('#email').value;
-            let password1 = document.querySelector('#password1').value;
+            // TODO add error messages
+            function checkSignIn() {
+                /** @type {String} */
+                let username = document.querySelector('#username').value;
+                /** @type {String} */
+                let email = document.querySelector('#email').value;
+                /** @type {String} */
+                let password = document.querySelector('#password1').value;
 
-            if (
-                username === '' &&
-                email === '' &&
-                password1 === ''
+                console.log(`username: ${username}`);
+                console.log(`email: ${email}`);
+                console.log(`password: ${password}`);
 
-            ) {
-                alert('Not all inputs filled');
-            } else {
-                document.dispatchEvent(new CustomEvent('sign-in-data', { //gibt Daten weiter
-                    detail: {
-                        username: username,
-                        email: email,
-                        password1: password1,
+                if (username === '' && email === '') {
+                    return;
+                }
+
+                if (password === '') {
+                    return;
+                }
+
+                if (email) {
+                    // See https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+                    const regex_email =
+                        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    // regex_email = /[a-z0-9]+@[a-z0-9]+.[a-z]+/gi;
+
+                    if (email.match(regex_email)) {
+                        // loginWithUserEmail(email, password);
                     }
-                }))
+                } else {
+                    // loginWithUserName(username, password);
+                }
 
-                $element.innerHTML = '';//schließt PopUp
+                // TODO just close if login succeded
+                closePopup();
             }
 
+            function closePopup() {
+                $element.innerHTML = '';
+            }
 
-        })
+            // TODO Username/email + Password check
+            function login() {
+                console.log('Logging in...');
+            }
 
-
-        return $element.firstChild; //macht das Popup ausgegeben wird
-    })
+            // Append the clone to the element
+            $element.appendChild(popup);
+        });
 
     return $element;
 }
 
-
 const popupSignIn = {
-    render
-}
-export default popupSignIn
+    render,
+};
+export default popupSignIn;
