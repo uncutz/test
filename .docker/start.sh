@@ -20,8 +20,8 @@ fi
 
 MYSQL_DATA_DIRECTORY="$PROJECT_DIRECTORY/.docker/mariadb/data"
 
-/usr/bin/docker run -it --rm \
-  -p 8080:80 \
+/usr/local/bin/docker run -it --rm \
+  -p 8099:80 \
   -p 33060:3306 \
   -p 63790:6379 \
   -v "${PROJECT_DIRECTORY}":/var/www/html \

@@ -137,20 +137,16 @@ function checkRequestedUrl (array $routes, string $requestUrl, Closure $http404)
 
 
 $request = new \HttpApi\HttpRequest();
-var_dump($request->getPath());
 
 $router = new Router();
 $router->append(include __DIR__ . '/../config/routes.php');
 $routes = $router->getRoutes();
 
-var_dump($_SERVER['REQUEST_METHOD']);
-
-var_dump($_SERVER['REQUEST_URI']);
-if ($_SERVER['REQUEST_URI'] == '/tests/test.php') {
+/*if ($_SERVER['REQUEST_URI'] === '/tests/test.php') {
     $receivedData = json_decode(file_get_contents("php://input"), true);
     echo "erfolgreich";
     exit();
-}
+}*/
 
 
 

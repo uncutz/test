@@ -2,6 +2,8 @@
 
 require_once __DIR__.'/../../vendor/autoload.php';
 $receivedData = json_decode(file_get_contents("php://input"), true);
-var_dump($receivedData);
-echo 'POST';
+echo json_encode([
+    'success' => true,
+    'erfolg' => 'jup'
+], JSON_THROW_ON_ERROR);
 exit();
